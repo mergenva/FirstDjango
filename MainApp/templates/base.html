@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_title }}</title>
+    {% block style %}
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% endblock %}
+</head>
+<body>
+<header>
+    <a {% if page_title == 'Home' %}class="current" {% endif %} href="{% url 'home-page' %}">Домой</a>/
+    <a {% if page_title == 'Items' %}class="current" {% endif %} href="{% url 'items-list' %}">Товары</a>
+    {% if page == 'Item' %} /
+        <a href="{% url 'item-page' item.id %}" class="current">{{item.name}}</a>
+    {% endif %}
+</header>
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+{% include 'inc/inc-footer.html' %}
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block style %}
+    {{ block.super }}
+    <style>
+        .card {
+            display: inline-block;
+            border: 1px solid blue;
+            padding: 10px;
+            margin: 8px;
+        }
+    </style>
+{% endblock %}
+{#<header>#}
+{#    <a href="/">Домой</a>/#}
+{#    <a href="/items/">Товары</a>/#}
+{#    <a class="current">{{item.name}}</a>#}
+{#</header>#}
+
+{% block content %}
+    <div class="card">
+        Товар {{ item.name }} {{ item.brand }}<br>
+        Количество: {{ item.count | default:'Товара нет на складе' }}
+    </div>
+{% endblock %}
